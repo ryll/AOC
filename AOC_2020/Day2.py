@@ -1,7 +1,4 @@
-
 import re
-
-
 
 countA,countB = 0,0
 
