@@ -1,11 +1,5 @@
-
-
-passports = []
-temp = []
-checks = ('byr','iyr','eyr','hgt','hcl','ecl','pid')
-
 def checkKeys(p):
-    return all(any(x in item for item in p.keys()) for x in checks)
+    return all([x in p.keys() for x in ('byr','iyr','eyr','hgt','hcl','ecl','pid')])
 
 
 def checkValues(p):
@@ -28,6 +22,8 @@ def checkValues(p):
     
     return True
 
+passports = []
+temp = []
 
 with open("Day4_input.txt") as f:
     for line in f:
@@ -39,7 +35,7 @@ with open("Day4_input.txt") as f:
     passports.append({k:v for [k,v] in [x.split(':') for x in temp]})
 
 #Problem 1
-print(sum([checkKeys(x) for x in passports]))
+print(sum([all([x in p.keys() for x in ('byr','iyr','eyr','hgt','hcl','ecl','pid')]) for p in passports]))
 
 #Problem 2
 print(sum([checkValues(x) for x in passports]))
